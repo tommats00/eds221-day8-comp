@@ -1,0 +1,25 @@
+---
+title: "Table Examples"
+author: "Tom Gibbens-Matsuyama"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+rm(list = ls())
+library(tidyverse)
+library(kableExtra)
+library(palmerpenguins)
+```
+
+```{r}
+penguins %>% 
+  group_by(species, island) %>% 
+  summarize(mean_mass = mean(body_mass_g, na.rm = TRUE)) %>% 
+  kable(col.names = c("Species", "Island", "Body Mass (g)")) %>% 
+  kable_styling(bootstrap_options = "striped",
+                full_width = FALSE)
+```
+
